@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NumWizard Pro</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <link rel= "stylesheet" href="converter.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon"></div>
+                    <h1>NumWizard Pro</h1>
+                </div>
+                <button class="theme-toggle" id="themeToggle">🌙</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <div class="content-left">
+                <div class="converter-card">
+                    <h2>NumWizard</h2>
+                    <div class="input-group">
+                        <label for="numberInput">Enter Num</label>
+                        <input type="text" id="numberInput" placeholder="e.g., 1010 (binary), 255 (decimal), FF (hex)">
+                        <div class="error-message" id="inputError"></div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="currentSystem">Current Num System</label>
+                        <select id="currentSystem">
+                            <option value="2">Binary (Base 2)</option>
+                            <option value="8">Octal (Base 8)</option>
+                            <option value="10" selected>Decimal (Base 10)</option>
+                            <option value="16">Hexadecimal (Base 16)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="targetSystem">CONVERT TO:</label>
+                        <select id="targetSystem">
+                            <option value="2">Binary (Base 2)</option>
+                            <option value="8">Octal (Base 8)</option>
+                            <option value="10">Decimal (Base 10)</option>
+                            <option value="16" selected>Hexadecimal (Base 16)</option>
+                        </select>
+                    </div>
+                    
+                    <button class="btn" id="convertBtn">
+                        <span>CONVERT</span>
+                    </button>
+                    
+                    <div class="result-container" id="resultContainer" style="display: none;">
+                        <h3>Result</h3>
+                        <div class="result" id="result"></div>
+                        <div class="action-buttons">
+                            <button class="btn" id="copyBtn">
+                                <span>Copy Result</span>
+                            </button>
+                            <button class="btn btn-secondary" id="saveBtn">
+                                <span>Save to History</span>
+                            </button>
+                            <button class="btn btn-secondary" id="exportPdfBtn">
+                                <span>Export as PDF</span>
+                            </button>
+                        </div>
+                        <div class="success-message" id="successMessage"></div>
+                    </div>
+                </div>
+                
+                <div class="history-card">
+                    <h2>Conversion History</h2>
+                    <div class="history-list" id="historyList">
+                        <!-- History items will be added here -->
+                    </div>
+                    <div class="action-buttons" style="margin-top: 1rem;">
+                        <button class="btn btn-secondary" id="clearHistoryBtn">
+                            <span>Clear History</span>
+                        </button>
+                        <button class="btn btn-secondary" id="exportHistoryBtn">
+                            <span>Export History as PDF</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="visualization-container">
+                    <div id="visualization"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Floating Chatbot -->
+    <div class="chatbot-container">
+        <div class="chatbot-icon" id="chatbotIcon"></div>
+        <div class="chatbot-window" id="chatbotWindow">
+            <div class="chatbot-header">
+                <h3>AI Assistant</h3>
+                <button class="close-chat" id="closeChat">×</button>
+            </div>
+            <div class="chatbot-messages" id="chatbotMessages">
+                <div class="message ai-message">
+                    Hello! I'm your AI assistant. I can help explain number systems, conversion processes, or answer any questions you have about this tool.
+                </div>
+            </div>
+            <div class="chatbot-input">
+                <input type="text" id="chatbotInput" placeholder="Ask me about number systems...">
+                <button class="btn" id="sendChatMessage">
+                    <span>Send</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; <span id="currentYear"></span> Number System Converter Pro. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="converter.js" defer></script>
+</body>
+
+</html>
